@@ -1,13 +1,10 @@
-import React from 'react';
-
+import { ReactNode } from 'react';
 import { AuthProvider } from './auth';
 
-const AppProvider: React.FC = ({ children }) => {
-  return (
-    <AuthProvider>
-        {children}
-    </AuthProvider>
-  );
-};
+interface AppProviderProps {
+  children: ReactNode
+}
 
-export default AppProvider;
+export function AppProvider({ children }: AppProviderProps) {
+  return <AuthProvider>{children}</AuthProvider>;
+}

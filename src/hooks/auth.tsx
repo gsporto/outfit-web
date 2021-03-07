@@ -1,7 +1,9 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
+import {
+  createContext, useCallback, useState, useContext, ReactNode,
+} from 'react';
 import axios from 'axios';
 import { decode } from 'jsonwebtoken';
-import api from '../services/api';
+import { api } from '../services/api';
 
 interface User {
   id: string;
@@ -23,9 +25,13 @@ interface AuthState {
   user: User;
 }
 
+interface AuthProvider {
+  children: ReactNode
+}
+
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({ children }) => {
+export function AuthProvider({ children }: AuthProvider) {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Vaggo:token');
     const user = localStorage.getItem('@Vaggo:user');
@@ -87,7 +93,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
