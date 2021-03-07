@@ -1,5 +1,9 @@
 import {
-  createContext, useCallback, useState, useContext, ReactNode,
+  createContext,
+  useCallback,
+  useState,
+  useContext,
+  ReactNode,
 } from 'react';
 import axios from 'axios';
 import { decode } from 'jsonwebtoken';
@@ -26,7 +30,7 @@ interface AuthState {
 }
 
 interface AuthProvider {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);

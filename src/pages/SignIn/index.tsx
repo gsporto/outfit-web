@@ -1,9 +1,4 @@
-import {
-  Button,
-  Grid,
-  Paper,
-  TextField,
-} from '@material-ui/core';
+import { Button, Grid, Paper, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { useStyles } from './styles';
@@ -51,9 +46,7 @@ export function SignIn() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link to="/#">
-                  Esqueci minha senha
-                </Link>
+                <Link to="/#">Esqueci minha senha</Link>
               </Grid>
             </Grid>
           </form>

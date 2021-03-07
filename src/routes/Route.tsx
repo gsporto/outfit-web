@@ -13,22 +13,28 @@ interface RouteProps extends ReactDOMRouteProps {
   component: React.ComponentType;
 }
 
-export function Route({ isPrivate = false, component: Component, ...rest }:RouteProps) {
+export function Route({
+  isPrivate = false,
+  component: Component,
+  ...rest
+}: RouteProps) {
   const { user } = useAuth();
   return (
     <Switch>
       <ReactDOMRoute
         {...rest}
-        render={({ location }) => (isPrivate === !!user ? (
-          <Component />
-        ) : (
-          <Redirect
-            to={{
-              pathname: isPrivate ? '/' : '/dashboard',
-              state: { from: location },
-            }}
-          />
-        ))}
+        render={({ location }) =>
+          isPrivate === !!user ? (
+            <Component />
+          ) : (
+            <Redirect
+              to={{
+                pathname: isPrivate ? '/' : '/dashboard',
+                state: { from: location },
+              }}
+            />
+          )
+        }
       />
     </Switch>
   );
